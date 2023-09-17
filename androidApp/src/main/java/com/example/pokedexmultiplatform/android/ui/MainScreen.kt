@@ -6,11 +6,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,28 +29,37 @@ import com.example.pokedexmultiplatform.android.utils.ImageBuilder
 fun MainScreen(pokedexViewModel: PokedexViewModel) {
 
     val response by pokedexViewModel.pokedex.collectAsState()
+    val example by pokedexViewModel.example.collectAsState()
 
-    when (response) {
-        PokedexUiState.Error -> TODO()
-        PokedexUiState.Loading -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        }
-
-        is PokedexUiState.Success -> {
-            LazyVerticalGrid(
-                columns = GridCells.Adaptive(minSize = 128.dp)
-            ) {
-                items((response as PokedexUiState.Success).pokemonList){
-                    PokemonCard(pokemon = it)
-                }
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+        LazyColumn(){
+            items(example){
+                Text(text = "ID: ${it.userId} - Title: ${it.title}")
             }
         }
     }
+
+//    when (response) {
+//        PokedexUiState.Error -> TODO()
+//        PokedexUiState.Loading -> {
+//            Box(
+//                modifier = Modifier.fillMaxSize(),
+//                contentAlignment = Alignment.Center
+//            ) {
+//                CircularProgressIndicator()
+//            }
+//        }
+//
+//        is PokedexUiState.Success -> {
+//            LazyVerticalGrid(
+//                columns = GridCells.Adaptive(minSize = 128.dp)
+//            ) {
+//                items((response as PokedexUiState.Success).pokemonList){
+//                    PokemonCard(pokemon = it)
+//                }
+//            }
+//        }
+//    }
 }
 
 @Composable
