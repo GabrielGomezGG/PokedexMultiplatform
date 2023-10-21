@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+//    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -49,13 +49,13 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
 
-    //Retrofit2
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-
-    //Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+//    //Retrofit2
+//    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+//    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+//
+//    //Dagger Hilt
+//    implementation("com.google.dagger:hilt-android:2.44")
+//    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     //Corrutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")

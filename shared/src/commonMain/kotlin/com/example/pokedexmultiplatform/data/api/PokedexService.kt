@@ -1,5 +1,7 @@
-package com.example.pokedexmultiplatform
+package com.example.pokedexmultiplatform.data.api
 
+import com.example.pokedexmultiplatform.data.api.models.PokedexApi
+import com.example.pokedexmultiplatform.data.api.models.PokemonApi
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -7,7 +9,7 @@ import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-class Greeting {
+class PokedexService {
 
     private val client = HttpClient(){
         install(ContentNegotiation){
@@ -19,8 +21,8 @@ class Greeting {
         }
     }
 
-    suspend fun greeting() : List<Post>{
-        val response = client.get("https://jsonplaceholder.typicode.com/todos/")
-        return response.body<List<Post>>()
+    suspend fun getPokedex() : List<PokemonApi> {
+        val response = client.get("https://pokeapi.co/api/v2/pokemon/?limit=800")
+        return response.body<PokedexApi>().results
     }
 }

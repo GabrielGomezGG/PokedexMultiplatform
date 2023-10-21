@@ -5,7 +5,7 @@ plugins {
     kotlin("android").version("1.8.21").apply(false)
     kotlin("multiplatform").version("1.8.21").apply(false)
 
-    id("com.google.dagger.hilt.android") version "2.44" apply false
+//    id("com.google.dagger.hilt.android") version "2.44" apply false
 }
 
 tasks.register("clean", Delete::class) {

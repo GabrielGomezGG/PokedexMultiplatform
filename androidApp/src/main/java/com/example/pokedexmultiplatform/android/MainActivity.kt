@@ -10,9 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.example.pokedexmultiplatform.android.ui.MainScreen
 import com.example.pokedexmultiplatform.android.ui.PokedexViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val pokedexViewModel: PokedexViewModel by viewModels()
