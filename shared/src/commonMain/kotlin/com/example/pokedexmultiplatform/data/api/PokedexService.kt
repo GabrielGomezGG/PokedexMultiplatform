@@ -22,7 +22,12 @@ class PokedexService {
     }
 
     suspend fun getPokedex() : List<PokemonApi> {
-        val response = client.get("https://pokeapi.co/api/v2/pokemon/?limit=800")
-        return response.body<PokedexApi>().results
+        return try{
+            val response = client.get("https://pokeapi.co/api/v2/pokemon/?limit=800")
+            response.body<PokedexApi>().results
+        }catch (e: Exception){
+            emptyList()
+        }
+
     }
 }

@@ -24,11 +24,12 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.pokedexmultiplatform.android.R
 import com.example.pokedexmultiplatform.android.utils.ImageBuilder
-import com.example.pokedexmultiplatform.data.api.models.PokemonApi
+import com.example.pokedexmultiplatform.domain.Pokemon
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun MainScreen(pokedexViewModel: PokedexViewModel) {
+fun MainScreen(pokedexViewModel: PokedexViewModel = koinViewModel()) {
 
     val response by pokedexViewModel.pokedex.collectAsState()
 
@@ -56,7 +57,7 @@ fun MainScreen(pokedexViewModel: PokedexViewModel) {
 }
 
 @Composable
-fun PokemonCard(pokemon: PokemonApi) {
+fun PokemonCard(pokemon: Pokemon) {
     Card(
         modifier = Modifier.padding(8.dp),
     ) {

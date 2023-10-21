@@ -9,8 +9,6 @@ data class PokedexApi (
     val count: Int,
     @SerialName("next")
     val next: String,
-//    @SerialName("previous")
-//    val previous: String,
     @SerialName("results")
     val results: List<PokemonApi>
 )

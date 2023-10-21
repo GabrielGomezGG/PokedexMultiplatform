@@ -1,6 +1,6 @@
 package com.example.pokedexmultiplatform.android.utils
 
-import java.util.*
+import java.util.Locale
 
 object StringFormatter {
 
