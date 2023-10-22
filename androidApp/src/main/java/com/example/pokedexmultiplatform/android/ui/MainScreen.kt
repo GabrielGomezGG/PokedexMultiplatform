@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.pokedexmultiplatform.android.R
-import com.example.pokedexmultiplatform.android.utils.ImageBuilder
+import com.example.pokedexmultiplatform.utils.ImageBuilder
 import com.example.pokedexmultiplatform.domain.Pokemon
 import org.koin.androidx.compose.koinViewModel
 
