@@ -24,8 +24,10 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.pokedexmultiplatform.android.R
 import com.example.pokedexmultiplatform.utils.ImageBuilder
-import com.example.pokedexmultiplatform.domain.Pokemon
+import com.example.pokedexmultiplatform.domain.models.Pokemon
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Spacer
 
 
 @Composable
@@ -34,7 +36,30 @@ fun MainScreen(pokedexViewModel: PokedexViewModel = koinViewModel()) {
     val response by pokedexViewModel.pokedex.collectAsState()
 
     when (response) {
-        PokedexUiState.Error -> TODO()
+        PokedexUiState.Error -> {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center)
+            {
+                Column {
+                    Image(
+                        painter = painterResource(id = R.drawable.miss),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(250.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text(
+                        text = "Error al cargar los datos" +
+                                "\n\nVerifica tu conexión a internet",
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        fontSize = 24.sp
+                    )
+                }
+            }
+        }
         PokedexUiState.Loading -> {
             Box(
                 modifier = Modifier.fillMaxSize(),

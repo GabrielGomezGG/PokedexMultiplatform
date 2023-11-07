@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization") version "1.8.10"
+    id("app.cash.sqldelight") version "2.0.0"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -31,6 +32,7 @@ kotlin {
         //KTOR
         val ktorVersion = "2.3.4"
         val koinVersion = "3.2.0"
+        val sqldelight = "2.0.0"
 
         val commonMain by getting {
             dependencies {
@@ -44,6 +46,8 @@ kotlin {
                 //koin
                 implementation("io.insert-koin:koin-core:$koinVersion")
                 implementation("io.insert-koin:koin-test:$koinVersion")
+
+                implementation("app.cash.sqldelight:sqlite-driver:$sqldelight")
             }
         }
         val commonTest by getting {
@@ -55,6 +59,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+
+                implementation("app.cash.sqldelight:android-driver:$sqldelight")
             }
         }
 
@@ -69,15 +75,25 @@ kotlin {
 
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+
+                implementation("app.cash.sqldelight:native-driver:$sqldelight")
             }
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("MyDatabase") {
+            packageName.set("com.example.pokedexmultiplatform")
         }
     }
 }
 
 android {
     namespace = "com.example.pokedexmultiplatform"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
-        minSdk = 21
+        minSdk = 28
     }
 }
