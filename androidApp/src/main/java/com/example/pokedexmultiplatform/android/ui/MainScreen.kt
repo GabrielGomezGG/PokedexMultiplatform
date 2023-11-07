@@ -51,7 +51,7 @@ fun MainScreen(pokedexViewModel: PokedexViewModel = koinViewModel()) {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "Error al cargar los datos" +
+                        text = "Ocurrió un error al cargar los datos " +
                                 "\n\nVerifica tu conexión a internet",
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
